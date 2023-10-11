@@ -1,6 +1,6 @@
 import { DashOutlined, UserOutlined } from "@ant-design/icons"
-import { Avatar, Button, Space } from "antd"
-
+import { Avatar, Button, Space,Typography } from "antd"
+const {Text} = Typography
 const Favorites = () =>(
     <>
         <Space direction="horizontal"
@@ -8,11 +8,14 @@ const Favorites = () =>(
                 width:'100%',
                 justifyContent:"space-between"}}
             >
-            Trò chuyện
+            <Text>Tro chuyen</Text>
             <Button icon={<DashOutlined />}/>
         </Space> 
             
-        <Space direction="horizontal">
+        <Space direction="horizontal" style={{
+                width:'100%',
+                justifyContent:"space-between"}}
+            >
             <Avatar icon={<UserOutlined/>}/>
             <Avatar icon={<UserOutlined/>}/>
             <Avatar icon={<UserOutlined/>}/>

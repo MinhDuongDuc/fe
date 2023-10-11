@@ -10,8 +10,8 @@ const SiderHead = () => (
                 placeholder="input search text"
                 allowClear
                 styles={{
-                    width: 150, 
-                    borderRadius:50
+                
+                    borderRadius:"50%"
                 }}
             />
             <Button shape="circle" icon={<EditOutlined />} />            
