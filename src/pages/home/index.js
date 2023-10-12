@@ -2,10 +2,11 @@ import ChatBody from "@/containers/chat/ChatBody";
 import ChatFooter from "@/containers/chat/ChatFooter";
 import ChatHeader from "@/containers/chat/ChatHeader";
 import Favorites from "@/containers/sider/Favorites";
-import Message from "@/containers/sider/Message";
+import Message from "@/containers/sider/ConversationList";
 import SiderHead from "@/containers/sider/SiderHead";
 import { EditOutlined } from "@ant-design/icons";
 import { Button, Layout, Input } from "antd"
+import ConversationList from "@/containers/sider/ConversationList";
 
 
 const { Sider ,Header , Content , Footer} = Layout
@@ -25,7 +26,7 @@ const HomePage = () => (
             >
                 <SiderHead />
                 <Favorites/>
-                <Message/>
+                <ConversationList/>
             </Sider>
             <Layout>
                 <Header style={{ background: "white" ,padding:'0 20px'}}

@@ -1,7 +1,7 @@
 import { UserOutlined } from "@ant-design/icons"
 import { Avatar, Row, Space, Typography } from "antd"
 const {Text} = Typography
-const Message = () => (
+const ConversationList = () => (
     <>
         <Space align="start">
             <Avatar size={50} icon={<UserOutlined />} />
@@ -19,4 +19,4 @@ const Message = () => (
         </Space>
     </>
 )
-export default Message
+export default ConversationList
