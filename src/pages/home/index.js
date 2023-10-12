@@ -1,3 +1,5 @@
+import ChatBody from "@/containers/chat/ChatBody";
+import ChatFooter from "@/containers/chat/ChatFooter";
 import ChatHeader from "@/containers/chat/ChatHeader";
 import Favorites from "@/containers/sider/Favorites";
 import Message from "@/containers/sider/Message";
@@ -6,21 +8,17 @@ import { EditOutlined } from "@ant-design/icons";
 import { Button, Layout, Input } from "antd"
 
 
-const { Sider ,Header} = Layout
+const { Sider ,Header , Content , Footer} = Layout
 const { Search } = Input;
 
 const HomePage = () => (
     <>
-        <Layout hasSider>
+        <Layout >
             <Sider
                 width={300}
                 style={{
-                    overflow: 'auto',
+                    // overflow: 'auto',
                     height: '100vh',
-                    position: 'fixed',
-                    left: 0,
-                    top: 0,
-                    bottom: 0,
                     borderRight:'1px solid #d6dbe1'
                 }}
                 theme="light"
@@ -29,15 +27,19 @@ const HomePage = () => (
                 <Favorites/>
                 <Message/>
             </Sider>
-
+            <Layout>
+                <Header style={{ background: "white" ,padding:'0 20px'}}
+                >
+                    <ChatHeader/>
+                </Header>
+                <Content>
+                    <ChatBody/>
+                </Content>
+                <Footer style={{ background: "white" }}>
+                    <ChatFooter/>
+                </Footer>
+            </Layout>
         </Layout>
-        <Layout>
-            <Header style={{ background: "blue", }}
-            >
-                <ChatHeader/>
-            </Header>
-        </Layout>
-
     </>
 )
 export default HomePage
