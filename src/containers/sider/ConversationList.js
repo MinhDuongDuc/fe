@@ -10,7 +10,7 @@ const ConversationList = () => (
                     <Text>Duong duc minh</Text>
                     <Text type="secondary">Monday</Text>
                 </Space>
-                <Text ellipsis style={{width:240}}>
+                <Text ellipsis style={{width:220}}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce cursus odio urna, a tristique nulla faucibus ut. 
                     Etiam consectetur erat sit amet dolor gravida, in fringilla tortor consequat
                 </Text>

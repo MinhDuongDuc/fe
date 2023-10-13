@@ -1,14 +1,14 @@
 import { AudioFilled, GifOutlined, PlusOutlined } from "@ant-design/icons"
-import { Button, Input, Space } from "antd"
+import { Button, Flex, Input, Space } from "antd"
 
 const ChatFooter = () => (
     <>
-        <Space>
+        <Flex style={{width:'100%'}} gap="small">
             <PlusOutlined />
             <GifOutlined />
-            <Input bordered={false} placeholder="Nhập tin nhắn" />
+            <Input bordered={false} placeholder="Nhập tin nhắn" style={{width:'100%'}}/>
             <Button shape="circle" icon = {<AudioFilled />}></Button>
-        </Space>
+        </Flex>
     </>
 )
 export default ChatFooter

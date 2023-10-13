@@ -19,6 +19,7 @@ const HomePage = () => (
                 width={300}
                 style={{
                     // overflow: 'auto',
+                    padding:10,
                     height: '100vh',
                     borderRight:'1px solid #d6dbe1'
                 }}
@@ -36,7 +37,7 @@ const HomePage = () => (
                 <Content>
                     <ChatBody/>
                 </Content>
-                <Footer style={{ background: "white" }}>
+                <Footer style={{ background: "white" , padding:'10px 20px'}}>
                     <ChatFooter/>
                 </Footer>
             </Layout>

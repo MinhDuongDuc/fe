@@ -1,6 +1,6 @@
 import { Flex,Typography } from "antd"
 const {Text} = Typography
-const MessageSent = () => (
+const MessageSent = (message) => (
     <>
         <Flex justify="flex-end">
             <Flex 
