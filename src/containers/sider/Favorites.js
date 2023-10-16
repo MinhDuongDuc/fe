@@ -3,7 +3,8 @@ import { Avatar, Button, Space,Typography } from "antd"
 const {Text} = Typography
 const Favorites = () =>(
     <>
-        <Space direction="horizontal"
+    <Space direction="vertical" style={{width:'100%'}}>
+        <Space 
             style={{
                 width:'100%',
                 justifyContent:"space-between"}}
@@ -12,7 +13,7 @@ const Favorites = () =>(
             <Button icon={<DashOutlined />}/>
         </Space> 
             
-        <Space direction="horizontal" style={{
+        <Space style={{
                 width:'100%',
                 justifyContent:"space-between"}}
             >
@@ -22,8 +23,9 @@ const Favorites = () =>(
             <Avatar icon={<UserOutlined/>}/>
             <Avatar icon={<UserOutlined/>}/>
             <Avatar icon={<UserOutlined/>}/>
-            
+            <Avatar icon={<UserOutlined/>}/>
         </Space>
+    </Space>    
     </>
 )
 export default Favorites

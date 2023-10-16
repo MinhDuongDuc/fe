@@ -5,8 +5,9 @@ import Favorites from "@/containers/sider/Favorites";
 import Message from "@/containers/sider/ConversationList";
 import SiderHead from "@/containers/sider/SiderHead";
 import { EditOutlined } from "@ant-design/icons";
-import { Button, Layout, Input } from "antd"
+import { Button, Layout, Input, Space } from "antd"
 import ConversationList from "@/containers/sider/ConversationList";
+import ConversationInfo from "@/containers/sider/ConversationInfo";
 
 
 const { Sider ,Header , Content , Footer} = Layout
@@ -25,13 +26,14 @@ const HomePage = () => (
                 }}
                 theme="light"
             >
-                <SiderHead />
-                <Favorites/>
-                <ConversationList/>
+                <Space direction="vertical">
+                    <SiderHead />
+                    <Favorites/>
+                    <ConversationList/>
+                </Space>
             </Sider>
             <Layout>
-                <Header style={{ background: "white" ,padding:'0 20px'}}
-                >
+                <Header style={{ background: "white" ,padding:'0 20px'}}>
                     <ChatHeader/>
                 </Header>
                 <Content>
@@ -41,6 +43,18 @@ const HomePage = () => (
                     <ChatFooter/>
                 </Footer>
             </Layout>
+            <Sider
+                width={300}
+                style={{
+                    // overflow: 'auto',
+                    // padding:10,
+                    height: '100vh',
+                    borderLeft:'1px solid #d6dbe1'
+                }}
+                theme="light"
+            >
+                <ConversationInfo/>
+            </Sider>
         </Layout>
     </>
 )
