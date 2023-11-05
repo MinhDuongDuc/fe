@@ -3,7 +3,7 @@ import { EditOutlined, SearchOutlined, UserOutlined } from '@ant-design/icons';
 const { Search } = Input;
 const SiderHead = () => (
     <>
-        <Space direction="horizontal">
+        <Space direction="horizontal" style={{padding:'0 10px'}}>
             <Avatar icon={<UserOutlined/>}/>
             <Input
                 prefix={<SearchOutlined/>}

@@ -3,7 +3,7 @@ import { Avatar, Button, Space,Typography } from "antd"
 const {Text} = Typography
 const Favorites = () =>(
     <>
-    <Space direction="vertical" style={{width:'100%'}}>
+    <Space direction="vertical" style={{width:'100%',padding:'0 10px'}}>
         <Space 
             style={{
                 width:'100%',

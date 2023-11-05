@@ -1,7 +1,8 @@
-import { Avatar, Flex, Space, Typography } from "antd"
+import { Avatar, Button , Flex, Space, Typography } from "antd"
 import { InfoCircleOutlined, ShareAltOutlined, UserAddOutlined, UserOutlined } from "@ant-design/icons"
 const { Text } = Typography
-const ChatHeader = () => (
+
+const ChatHeader = (props) => (
     <>
         <Flex justify="space-between" align="center" >
             <Space  style={{ lineHeight: 'normal' }}>
@@ -12,9 +13,13 @@ const ChatHeader = () => (
                 </Space>
             </Space>
             <Space size={"middle"}>
-                <UserAddOutlined style={{ fontSize: '24px' }} />
-                <ShareAltOutlined style={{ fontSize: '24px' }} />
-                <InfoCircleOutlined style={{ fontSize: '24px' }} />
+                <Button style={{borderStyle:'none'}} icon= {<UserAddOutlined style={{ fontSize: '24px' }} />}/>
+                <Button style={{borderStyle:'none'}} icon= {<ShareAltOutlined style={{ fontSize: '24px' }} />}/>
+                <Button 
+                    onClick={() => props.func(props.col)}
+                    style={{borderStyle:'none'}} 
+                    icon= {<InfoCircleOutlined style={{ fontSize: '24px' }} />}
+                />
             </Space>
         </Flex>
 

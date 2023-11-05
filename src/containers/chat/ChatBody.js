@@ -12,7 +12,7 @@ const messages = [
     },
     {
         type: 'send',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+        content: 'Hello',
         timing: '20/10/2023',
         isSeen: true
     },

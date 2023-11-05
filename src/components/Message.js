@@ -1,5 +1,5 @@
 import { UserOutlined } from "@ant-design/icons"
-import { Flex,Typography,Avatar } from "antd"
+import { Flex,Typography,Avatar, Button } from "antd"
 const {Text} = Typography
 const messageSent = {
     justify:"flex-end",
@@ -21,11 +21,17 @@ const messageReceived = {
         marginBottom:10
     }
 }
-const Message = (m) => (
+const speak = (messages) => {
+    const synth = typeof window !== "undefined" && window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance(messages);
+    synth.speak(utterance);
+}
+const Message = (m) => {
+    return (
     <>
-
         <Flex gap="small" justify={m.messages.type === 'send' ? messageSent.justify : messageReceived.justify}>
             {m.messages.type === 'receive' ? (<Avatar icon={<UserOutlined/>}/>): (<div></div>)}
+            {/* <Button onClick={() => speak(m.messages.content)}></Button> */}
             <Flex 
                 vertical
                 style={m.messages.type === 'send' ? messageSent.messageStyle : messageReceived.messageStyle}
@@ -36,5 +42,6 @@ const Message = (m) => (
             </Flex>
         </Flex>
     </>
-)
+    );
+};
 export default Message
