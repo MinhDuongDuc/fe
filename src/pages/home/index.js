@@ -1,20 +1,20 @@
-import ChatBody from "@/containers/chat/ChatBody";
-import ChatFooter from "@/containers/chat/ChatFooter";
-import ChatHeader from "@/containers/chat/ChatHeader";
-import Favorites from "@/containers/sider/Favorites";
-import Message from "@/containers/sider/ConversationList";
-import SiderHead from "@/containers/sider/SiderHead";
-import { EditOutlined } from "@ant-design/icons";
-import { Button, Layout, Input, Space } from "antd"
-import ConversationList from "@/containers/sider/ConversationList";
+import {  Layout, Input } from "antd"
 import ConversationInfo from "@/containers/sider/ConversationInfo";
-import React, { useEffect, useState } from 'react';
+import React, {  useState, createContext, useContext } from 'react';
+import ConversationSideBar from "@/containers/sider/ConversationSideBar";
+import AccountSideBar from "@/containers/account/AccountSideBar";
 
-const { Sider, Header, Content, Footer } = Layout
-const { Search } = Input;
+const { Sider} = Layout
+const ChatHeaderContext = createContext();
 
-const HomePage = () => {
-    
+export function useChatHeaderContext(){
+   return useContext(ChatHeaderContext);
+}
+const HomePage = ({children}) => {
+    const [toogleAccountList,toogle] = useState(false);
+    const toogleAccountListFunc =(t) =>{
+        toogle(!t)
+    };
 
     const [collapsed, setCollapsed] = useState(true);
     const handleCollapsed = (c) => {
@@ -33,22 +33,13 @@ const HomePage = () => {
                     }}
                     theme="light"
                 >
-                    <Space direction="vertical">
-                        <SiderHead />
-                        <Favorites />
-                        <ConversationList />
-                    </Space>
+                    {!toogleAccountList &&<ConversationSideBar func={toogleAccountListFunc} param={toogleAccountList}/>}
+                    {toogleAccountList &&<AccountSideBar func={toogleAccountListFunc} param={toogleAccountList}/>}
                 </Sider>
                 <Layout>
-                    <Header style={{ background: "white", padding: '0 20px' }}>
-                        <ChatHeader func={handleCollapsed} col={collapsed} />
-                    </Header>
-                    <Content>
-                        <ChatBody />
-                    </Content>
-                    <Footer style={{ background: "white", padding: '10px 20px' }}>
-                        <ChatFooter />
-                    </Footer>
+                    <ChatHeaderContext.Provider value={{collapsed,handleCollapsed}}>
+                        {children}
+                    </ChatHeaderContext.Provider>
                 </Layout>
                 <Sider
                     width={300}

@@ -9,15 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/cssinjs": "^1.17.2",
     "@ant-design/icons": "^5.2.6",
     "@microsoft/signalr": "^7.0.12",
     "antd": "^5.10.0",
     "jwt-decode": "^4.0.0",
+    "material-icons": "^1.13.12",
     "next": "13.5.4",
     "react": "^18",
     "react-dom": "^18",
+    "react-infinite-scroll-component": "^6.1.0",
     "react-speech-recognition": "^3.10.0",
-    "regenerator-runtime": "^0.14.0"
+    "regenerator-runtime": "^0.14.0",
+    "swr": "^2.2.4"
   },
   "devDependencies": {
     "eslint": "^8",

@@ -1,0 +1,6 @@
+.options{
+    display: none;
+}
+.message:hover .options{
+    display: inline;
+}

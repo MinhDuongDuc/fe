@@ -1,7 +1,7 @@
 import { Avatar, Button, Input, Space } from "antd"
 import { EditOutlined, SearchOutlined, UserOutlined } from '@ant-design/icons';
 const { Search } = Input;
-const SiderHead = () => (
+const SiderHead = (props) => (
     <>
         <Space direction="horizontal" style={{padding:'0 10px'}}>
             <Avatar icon={<UserOutlined/>}/>
@@ -11,7 +11,7 @@ const SiderHead = () => (
                 allowClear
                 
             />
-            <Button shape="circle" icon={<EditOutlined />} />            
+            <Button onClick={() => props.toogle.func(props.toogle.param)} shape="circle" icon={<EditOutlined />} />            
         </Space>
     </>
 )
