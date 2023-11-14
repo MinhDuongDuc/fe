@@ -4,14 +4,17 @@ import { Form, Input, Button, Checkbox, Card } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { Typography } from "antd";
 import jwt_decode, { jwtDecode } from "jwt-decode";
+import { baseUrl } from "@/api/baseUrl";
+import { useRouter } from "next/router";
 const { Title } = Typography;
 
 const LoginForm = () => {
     // const [username, setUserName ] = useState('');
     // const [password, setPassword ] = useState('');  
+    const router = useRouter()
     const onFinish = (values) => {
         try {
-            fetch('https://localhost:44302/api/Account/Auth', {
+            fetch(baseUrl+'api/Account/Auth', {
                 method: 'POST',
                 body: JSON.stringify({
                     "userName": values.username,
@@ -26,7 +29,7 @@ const LoginForm = () => {
                     if (data.status === 'Success') {
                         localStorage.setItem("token", data.result.token);
                         localStorage.setItem("userId",data.result.accountId)
-                        
+                        router.push('/')
                     }
                 });
         }
