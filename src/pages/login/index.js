@@ -54,7 +54,7 @@ const LoginForm = () => {
         >
             <Card style={{ width: 500 }}>
                 <div style={{ display: "flex", justifyContent: "center" }}>
-                    <Title level={2}>Company Logo </Title>
+                    <Title level={2}>OTT APP </Title>
                 </div>
                 <Form
                     name="normal_login"
