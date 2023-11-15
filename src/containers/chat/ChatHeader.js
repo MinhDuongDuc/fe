@@ -11,7 +11,7 @@ const ChatHeader = () => {
             <Space  style={{ lineHeight: 'normal' }}>
                 <Avatar size={50} icon={<UserOutlined />} />
                 <Space direction="vertical">
-                    <Text>Duong duc minh</Text>
+                    <Text>minh</Text>
                     {/* <Text>+123456789</Text> */}
                 </Space>
             </Space>
