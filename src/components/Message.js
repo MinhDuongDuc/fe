@@ -86,6 +86,7 @@ const Message = (m) => {
 
 
     const [translated, setTranslate] = useState('');
+    console.log(translated);
     const style = messageStyle(m.sendByCurrent, m.messagetype);
     return (
         <>

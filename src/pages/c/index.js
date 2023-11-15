@@ -16,6 +16,7 @@ const ConversationList = () => {
     const { data } = useSWR(url, fetchConversation)
     // console.log(data?.result?.items);
     const conversations = data?.result?.items;
+    console.log(url);
     return (
         <Space direction="vertical">
             {conversations?.map((c) => {

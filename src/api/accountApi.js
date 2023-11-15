@@ -1,1 +1,6 @@
-export const fetchAccount = accountPagingUrl => fetch(accountPagingUrl).then(r => r.json());
+export const fetchAccount = accountPagingUrl => fetch(accountPagingUrl,{
+    method: "get",
+      headers: new Headers({
+        "ngrok-skip-browser-warning": "69420",
+      }),
+}).then(r => r.json());

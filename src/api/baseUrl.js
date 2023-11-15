@@ -1,4 +1,4 @@
-export const baseUrl = "https://localhost:44302/";
+export const baseUrl = "https://e01c-123-24-142-107.ngrok-free.app/";
 
 export const conversationPagingUrl = (currentAccountId) => {
     return baseUrl+"api/Conversation/Paging?PerPage=20&CurrentPage=1&AccountId="+currentAccountId;

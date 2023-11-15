@@ -1,5 +1,6 @@
 import { baseUrl, messageSendUrl } from "@/api/baseUrl";
 import { createConnection, sendMessage } from "@/api/messageApi";
+import { useConversationContext } from "@/pages/c/[conversationId]";
 import GetCurrentUser from "@/utils/getUser";
 import { AudioFilled, CloseCircleOutlined, CloseOutlined, GifOutlined, PauseCircleOutlined, PauseOutlined, PlusOutlined, SendOutlined } from "@ant-design/icons"
 
@@ -19,22 +20,27 @@ const ChatFooter = () => {
     const [messageBody, setMessage] = useState('');
     // const [senderId, setSender] = useState('');
     const [receiverId, setReceiver] = useState('');
-    const conversationId = "609768ad-61b3-4b56-9257-435fd0796d71";
+    const conversationId = useConversationContext();
+    console.log(conversationId);
     const senderId = GetCurrentUser();
     useEffect(() => {
         createConnection(senderId, conversationId);
     }, []);
-
+    useEffect(() => {
+        setMessage(transcript);
+      }, [transcript]);
 
     const handleSendMessage = () => {
         sendMessage(messageBody, senderId, conversationId);
     }
+    console.log(listening);
     return (
         <>
             <Flex style={{ width: '100%' }} gap="small">
-                <Input value={transcript} onChange={(e) => { setMessage(e.target.value) }} bordered={false} placeholder="Nhập tin nhắn" />
+                {listening&&<Input value={transcript} onChange={(e) => { setMessage(e.target.value) }} bordered={false} placeholder="Nhập tin nhắn" />}
+                {!listening&&<Input onChange={(e) => { setMessage(e.target.value) }} bordered={false} placeholder="Nhập tin" />}
                 <Button onClick={() => sendMessage(messageBody, senderId, conversationId)} shape="circle" icon={<SendOutlined />}></Button>
-                <Button onClick={SpeechRecognition.startListening} shape="circle" icon={<AudioFilled />}></Button>
+                <Button onClick={() =>SpeechRecognition.startListening({ continuous: true })} shape="circle" icon={<AudioFilled />}></Button>
                 <Button onClick={SpeechRecognition.stopListening} shape="circle" icon={<PauseOutlined />}></Button>
             </Flex>
         </>

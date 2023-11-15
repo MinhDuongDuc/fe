@@ -3,8 +3,18 @@ import { baseUrl, conversationPagingUrl, messagePagingUrl, messageSendUrl, messa
 import { async } from "regenerator-runtime";
 import { HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
 
-export const fetchMessage = messagePagingUrl => fetch(messagePagingUrl).then(r => r.json());
-export const translateMessage = messageTranslateUrl => fetch(messageTranslateUrl).then(r => r.json());
+export const fetchMessage = messagePagingUrl => fetch(messagePagingUrl,{
+    method: "get",
+      headers: new Headers({
+        "ngrok-skip-browser-warning": "69420",
+      }),
+}).then(r => r.json());
+export const translateMessage = messageTranslateUrl => fetch(messageTranslateUrl,{
+    method: "get",
+      headers: new Headers({
+        "ngrok-skip-browser-warning": "69420",
+      }),
+}).then(r => r.json());
 
 export async function sendMessage(messageBody, senderId, conversationId) {
     console.log(messageBody, senderId, conversationId);
@@ -18,7 +28,7 @@ export async function sendMessage(messageBody, senderId, conversationId) {
                 "receiverIds": []
             }),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',"ngrok-skip-browser-warning": "69420",
             }
         }).then(r => r.json());
     }
