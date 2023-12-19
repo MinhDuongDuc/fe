@@ -17,7 +17,7 @@ export const translateMessage = messageTranslateUrl => fetch(messageTranslateUrl
 }).then(r => r.json());
 
 export async function sendMessage(messageBody, senderId, conversationId) {
-    console.log(messageBody, senderId, conversationId);
+    // console.log(messageBody, senderId, conversationId);
     try {
         await fetch(messageSendUrl, {
             method: 'POST',
@@ -37,8 +37,8 @@ export async function sendMessage(messageBody, senderId, conversationId) {
     }
 }
 
-export async function createConnection(senderId,conversationId) {
-    const pagingUrl = messagePagingUrl(senderId,conversationId);
+export  function createConnection(senderId,conversationId,language) {
+    const pagingUrl = messagePagingUrl(senderId,conversationId,language);
     const url = conversationPagingUrl(senderId);
     const conn = new HubConnectionBuilder()
         .withUrl(baseUrl + 'messageHub')
@@ -47,10 +47,10 @@ export async function createConnection(senderId,conversationId) {
         .build();
     conn.start({ waitForPageLoad: false}).then(result => {
         console.log('connected');
-        conn.on('SendMessage',Url => {
+        conn.on('SendMessage',(mess) => {
             mutate(pagingUrl);
             mutate(url);
-            console.log("sent");
+            console.log(pagingUrl,"sent");
         })
     }).catch(e => console.log('Connect failed: ', e));
 }

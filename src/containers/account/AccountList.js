@@ -6,7 +6,8 @@ import { Avatar, Checkbox, Flex, Space,Typography } from "antd";
 import useSWRImmutable from "swr";
 const { Text } = Typography
 const AccountList = () => {
-    const currentUser = GetCurrentUser();
+    const user = GetCurrentUser();
+    const currentUser = user.accountId;
     const url = accountPagingUrl(currentUser);
     const {data} = useSWRImmutable(url, fetchAccount);
     const accounts = data?.result?.items;
@@ -18,9 +19,9 @@ const AccountList = () => {
                         padding: 10,
                         borderRadius: 20}} 
                         key={a.id} >
-                            <Avatar size={40} icon={<UserOutlined />} />
+                            <Avatar size={40} src={<img src={a.email}/>} />
                             <Text strong>{a.userName}</Text>
-                            <Checkbox></Checkbox>
+                            {/* <Checkbox></Checkbox> */}
                     </Space>
 
                 );

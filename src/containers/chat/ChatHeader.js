@@ -2,16 +2,19 @@ import { Avatar, Button , Flex, Space, Typography } from "antd"
 import { InfoCircleOutlined, ShareAltOutlined, UserAddOutlined, UserOutlined } from "@ant-design/icons"
 import { createContext } from "react";
 import { useChatHeaderContext } from "@/pages/home";
+import { getUserAvatar } from "@/utils/getUser";
 const { Text } = Typography
 
 const ChatHeader = () => {
     const funcCollapsed = useChatHeaderContext();
+    const url = getUserAvatar();
+    // const url = "https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Blue&facialHairType=BeardMedium&facialHairColor=Brown&clotheType=ShirtScoopNeck&clotheColor=Gray02&eyeType=Cry&eyebrowType=AngryNatural&mouthType=Eating&skinColor=Tanned";
     return(
         <Flex justify="space-between" align="center" >
             <Space  style={{ lineHeight: 'normal' }}>
-                <Avatar size={50} icon={<UserOutlined />} />
+                <Avatar size={50} src={<img src={url}/>} />
                 <Space direction="vertical">
-                    <Text>minh</Text>
+                    <Text>User1</Text>
                     {/* <Text>+123456789</Text> */}
                 </Space>
             </Space>
