@@ -8,7 +8,7 @@ const ConversationSideBar = (props) => {
         <>
             <Space direction="vertical">
                 <SiderHead toogle={props}/>
-                <Favorites />
+                {/* <Favorites /> */}
                 <ConversationList />
             </Space>
         </>

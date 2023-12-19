@@ -1,4 +1,4 @@
-export const baseUrl = "https://e01c-123-24-142-107.ngrok-free.app/";
+export const baseUrl = "https://localhost:44302/";
 
 export const conversationPagingUrl = (currentAccountId) => {
     return baseUrl+"api/Conversation/Paging?PerPage=20&CurrentPage=1&AccountId="+currentAccountId;
@@ -6,8 +6,8 @@ export const conversationPagingUrl = (currentAccountId) => {
 
 export const messageSendUrl = baseUrl + "api/Message/Send";
 
-export const messagePagingUrl = (currentAccountId,conversationId) => {
-    return baseUrl+"api/Message/Paging?PageSize=30&PageNumber=1&ConversationId="+conversationId+"&AccountId="+currentAccountId;
+export const messagePagingUrl = (currentAccountId,conversationId,targetLanguage) => {
+    return baseUrl+"api/Message/Paging?PageSize=30&PageNumber=1&ConversationId="+conversationId+"&AccountId="+currentAccountId +"&targetLanguage="+targetLanguage;
 }
 
 export const accountPagingUrl = (currentAccountId) => {

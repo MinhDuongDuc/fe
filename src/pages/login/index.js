@@ -29,6 +29,7 @@ const LoginForm = () => {
                     if (data.status === 'Success') {
                         localStorage.setItem("token", data.result.token);
                         localStorage.setItem("userId",data.result.accountId)
+                        localStorage.setItem("user",JSON.stringify(data.result));
                         router.push('/')
                     }
                 });

@@ -5,6 +5,7 @@ import 'material-icons/iconfont/material-icons.css';
 import { useState } from "react";
 import MessageOptions from "./MessageOptions";
 import styles from '@/styles/message.module.css'
+import { getUserAvatar } from "@/utils/getUser";
 const { Text } = Typography
 
 const messageStyle = (sendByCurrent, type) => {
@@ -84,14 +85,14 @@ const speak = (messages) => {
 
 const Message = (m) => {
 
-
+    const avatar = getUserAvatar();
     const [translated, setTranslate] = useState('');
     console.log(translated);
     const style = messageStyle(m.sendByCurrent, m.messagetype);
     return (
         <>
             <Flex gap="small" justify={style.justify} align="center" className={styles.message}>
-                {(!m.sendByCurrent && (m.messagetype === 'last' || m.messagetype === 'only')) ? (<Avatar icon={<UserOutlined />} />) : (<div></div>)}
+                {(!m.sendByCurrent && (m.messagetype === 'last' || m.messagetype === 'only')) ? (<Avatar src={<img src={avatar}/>}  />) : (<div></div>)}
                 {/* <Button onClick={() => speak(m.messages.content)}></Button> */}
                 {m.sendByCurrent &&
                     <Popover content={<MessageOptions message={m.messages} speak={speak} translated={translated} setTranslate={setTranslate} />} placement="leftBottom" trigger={"click"}>
