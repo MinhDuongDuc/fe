@@ -92,7 +92,7 @@ const Message = (m) => {
     return (
         <>
             <Flex gap="small" justify={style.justify} align="center" className={styles.message}>
-                {(!m.sendByCurrent && (m.messagetype === 'last' || m.messagetype === 'only')) ? (<Avatar src={<img src={avatar}/>}  />) : (<div></div>)}
+                {(!m.sendByCurrent && (m.messagetype === 'last' || m.messagetype === 'only')) ? (<Avatar src={<img src={m.messages.senderAvatar}/>}  />) : (<div></div>)}
                 {/* <Button onClick={() => speak(m.messages.content)}></Button> */}
                 {m.sendByCurrent &&
                     <Popover content={<MessageOptions message={m.messages} speak={speak} translated={translated} setTranslate={setTranslate} />} placement="leftBottom" trigger={"click"}>

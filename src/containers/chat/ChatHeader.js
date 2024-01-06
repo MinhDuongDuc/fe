@@ -2,19 +2,31 @@ import { Avatar, Button , Flex, Space, Typography } from "antd"
 import { InfoCircleOutlined, ShareAltOutlined, UserAddOutlined, UserOutlined } from "@ant-design/icons"
 import { createContext } from "react";
 import { useChatHeaderContext } from "@/pages/home";
-import { getUserAvatar } from "@/utils/getUser";
+import GetCurrentUser, { getUserAvatar, getUserId } from "@/utils/getUser";
+import { useConversationContext } from "@/pages/c/[conversationId]";
 const { Text } = Typography
 
 const ChatHeader = () => {
     const funcCollapsed = useChatHeaderContext();
-    const url = getUserAvatar();
-    // const url = "https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=Blank&hairColor=Blue&facialHairType=BeardMedium&facialHairColor=Brown&clotheType=ShirtScoopNeck&clotheColor=Gray02&eyeType=Cry&eyebrowType=AngryNatural&mouthType=Eating&skinColor=Tanned";
+    const {con} = useConversationContext();
+    const currentUser = getUserId();
+    const user = {
+        ava : '',
+        displayName : ''
+    }
     return(
+        
         <Flex justify="space-between" align="center" >
+            {con.participants?.map((p) => {
+                if(p.id !== currentUser){
+                    user.ava = p.email;
+                    user.displayName = p.username;
+                }
+            })}
             <Space  style={{ lineHeight: 'normal' }}>
-                <Avatar size={50} src={<img src={url}/>} />
+                <Avatar size={50} src={<img src={user.ava}/>} />
                 <Space direction="vertical">
-                    <Text>User1</Text>
+                    <Text>{user.displayName}</Text>
                     {/* <Text>+123456789</Text> */}
                 </Space>
             </Space>

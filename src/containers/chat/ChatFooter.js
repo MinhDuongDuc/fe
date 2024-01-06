@@ -30,7 +30,15 @@ const ChatFooter = () => {
         <>
             <Flex style={{ width: '100%' }} gap="small">
                 {listening&&<Input value={transcript} onChange={(e) => { setMessage(e.target.value) }} bordered={false} placeholder="Nhập tin nhắn" />}
-                {!listening&&<Input onChange={(e) => { setMessage(e.target.value) }} bordered={false} placeholder="Nhập tin" />}
+                {!listening&&
+                <Input 
+                    onChange={(e) => { setMessage(e.target.value) }} 
+                    onPressEnter={(e)=> {
+                        e.target.value='';
+                        sendMessage(messageBody, senderId, conversationId)
+                    }} 
+                    bordered={false} 
+                    placeholder="Nhập tin" />}
                 <Popover content={<TranslateLanguageOptions user={senderId} con = {conversationId}/>} placement="topLeft" trigger={"click"}>
                     <Button icon={<span class="material-icons">g_translate</span>} style={{border:"none"}}></Button>
                 </Popover>

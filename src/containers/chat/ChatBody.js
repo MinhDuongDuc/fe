@@ -2,11 +2,18 @@ import Message from "@/components/Message"
 import GetCurrentUser from "@/utils/getUser"
 import { useConversationContext } from "@/pages/c/[conversationId]"
 import styles from '@/styles/messageContainer.module.css'
+import { messagePagingUrl } from "@/api/baseUrl"
+import useSWR from "swr";
+import { fetchMessage } from "@/api/messageApi"
 
 const ChatBody = () => {
-    const {messages,language} = useConversationContext();
+    const {conversationId,language} = useConversationContext();
     const user = GetCurrentUser();
     let messagetype;
+    const url = messagePagingUrl(user.accountId, conversationId,language);
+    // console.log(url,"get");    
+    const { data,mutate } = useSWR(url, fetchMessage,{revalidateOnMount:true})
+    const messages=  data?.result?.items;
     return (
         <div className={styles.container}>
 

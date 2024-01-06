@@ -1,7 +1,7 @@
 import { conversationPagingUrl } from "@/api/baseUrl"
 import { fetchConversation } from "@/api/conversationApi"
 import { convertToDate } from "@/utils/convertDateTime"
-import GetCurrentUser, { getUserAvatar } from "@/utils/getUser"
+import GetCurrentUser, { getUserAvatar, getUserId } from "@/utils/getUser"
 import { UserOutlined } from "@ant-design/icons"
 import { Avatar, Row, Space, Typography } from "antd"
 import Link from "next/link"
@@ -11,10 +11,14 @@ const { Text } = Typography
 
 
 const ConversationList = () => {
-    const currentUser = GetCurrentUser();
-    const url = conversationPagingUrl(currentUser.accountId);
+    const currentUser = getUserId();
+    const url = conversationPagingUrl(currentUser);
     const { data } = useSWR(url, fetchConversation)
     const avatar = getUserAvatar();
+    const name = {
+        ava : '',
+        displayName : ''
+    }
     // console.log(data?.result?.items);
     const conversations = data?.result?.items;
     return (
@@ -22,17 +26,28 @@ const ConversationList = () => {
             {conversations?.map((c) => {
                 return (
 
-                    <Link href={`/c/${c.conversationId}`} key={c.conversationId} >
+                    <Link href={{ 
+                            pathname : `/c/${c.conversationId}`,
+                            query:{
+                                con : JSON.stringify(c)
+                            }
+                        }} key={c.conversationId} >
                         <Space align="start" style={{
                             // border: '1px solid grey',
                             padding: 10,
                             borderRadius: 20
                         }}
                         >
-                            <Avatar size={50} src={<img src={avatar}/>} />
+                            {c.participants?.map((p) => {
+                                if (p.id !== currentUser){
+                                    name.ava = p.email;
+                                    name.displayName = p.username;
+                                }
+                            })}
+                            <Avatar size={50} src={<img src={name.ava}/>} />
                             <Space direction="vertical" size={0}>
                                 <Space style={{ justifyContent: "space-between", width: '100%' }}>
-                                    <Text strong>{/*{c.conversationBody}*/} User1</Text> 
+                                    <Text strong>{name.displayName} </Text> 
                                     <Text type="secondary">{convertToDate(c.messageSendTime)}</Text>
                                 </Space>
                                 <div>

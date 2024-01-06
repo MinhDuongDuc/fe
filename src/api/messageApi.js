@@ -25,12 +25,12 @@ export async function sendMessage(messageBody, senderId, conversationId) {
                 messageBody,
                 senderId,
                 conversationId,
-                "receiverIds": []
+                
             }),
             headers: {
                 'Content-Type': 'application/json',"ngrok-skip-browser-warning": "69420",
             }
-        }).then(r => r.json());
+        }).then(r => r);
     }
     catch (e) {
         console.log('Sending message failed.', e);
@@ -47,7 +47,7 @@ export  function createConnection(senderId,conversationId,language) {
         .build();
     conn.start({ waitForPageLoad: false}).then(result => {
         console.log('connected');
-        conn.on('SendMessage',(mess) => {
+        conn.on('SendMessage',() => {
             mutate(pagingUrl);
             mutate(url);
             console.log(pagingUrl,"sent");

@@ -20,10 +20,7 @@ export default function TranslateLanguageOptions() {
             name: 'Chinese',
             code: "zh"
         },
-        {
-            name: 'es',
-            code: "es"
-        },
+        
     ]
     const messageOptionsStyle = {
         display: 'flex', flexDirection: 'row', padding: 5, alignItems: "center",
